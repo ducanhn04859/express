@@ -1,0 +1,15 @@
+h1 ADD NEW BOOK
+
+form(action="/book/create",method="POST")
+    label Title :
+    span &nbsp
+    input(type="text", name="title")
+    br
+    label Description :
+    br
+    textarea(name="des")
+    br
+    br
+    button ADD
+
+    a(href="/book/") Back

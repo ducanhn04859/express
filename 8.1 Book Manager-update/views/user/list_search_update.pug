@@ -1,0 +1,13 @@
+h1 Update User
+br
+p Search user by name
+form(action="/user/search", method="GET")
+    input(type="text",name="q")
+    button Search
+ul
+    each user in users
+        li
+            span= user.name
+            span &nbsp;
+                a(href="/user/edit/"+ user.id) Edit
+a(href="/user/") Back

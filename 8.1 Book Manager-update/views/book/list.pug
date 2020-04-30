@@ -1,0 +1,14 @@
+h1 Manager Book In System 
+h3 List books in system
+ p Search book by name
+form(action="/book/search", method="GET")
+    input(type="text",name="q")
+    button Search
+ul
+    each book in books
+        li
+            span= book.title
+            span &nbsp;
+                a(href="/book/detail/"+ book.id) View Detail
+
+a(href="/book/") Back

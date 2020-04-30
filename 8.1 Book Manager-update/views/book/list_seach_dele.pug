@@ -1,0 +1,13 @@
+h1 Delete Book
+br
+P Search book by name
+form(action="/book/search", method="GET")
+    input(type="text",name="q")
+    button Search
+ul
+    each book in books
+        li
+            span= book.title
+            span &nbsp;
+                a(href="/book/delete/"+ book.id) Delete
+a(href="/book/") Back

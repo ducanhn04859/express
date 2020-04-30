@@ -1,0 +1,15 @@
+h1 ADD NEW USER
+
+form(action="/user/create",method="POST")
+    label User Name :
+    span &nbsp
+    input(type="text", name="name")
+    br
+    label Telephone number :
+    span &nbsp
+    input(type="text", name="tel")
+    br
+    br
+    button ADD
+br
+    a(href="/user/") Back

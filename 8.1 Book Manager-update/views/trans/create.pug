@@ -1,0 +1,19 @@
+h1 ADD TRANSACTION BOOK
+
+h3 Choose Your Skill
+div
+    form(action='/transaction/create' method="post")
+        label(for='userOpt') Username:
+        select(name='dD_user', id='')
+            each user in users
+                option=user.name
+        br
+        label(for='bookOpt') Title book: 
+        select(name='dD_book', id='')
+            each book in books
+                option=book.title    
+        br 
+        br   
+        input(type='submit', value='Submit')
+
+    a(href="/book/") Back

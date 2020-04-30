@@ -1,0 +1,14 @@
+h1 Manager User In System 
+h3 List user in system
+ p Search user by name
+form(action="/user/search", method="GET")
+    input(type="text",name="q")
+    button Search
+ul
+    each user in users
+        li
+            span= user.name
+            span &nbsp;
+                a(href="/user/detail/"+ user.id) View Detail
+
+a(href="/user/") Back
