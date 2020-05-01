@@ -1,14 +1,34 @@
-h1 Manager User In System 
-h3 List user in system
- p Search user by name
-form(action="/user/search", method="GET")
-    input(type="text",name="q")
-    button Search
-ul
-    each user in users
-        li
-            span= user.name
-            span &nbsp;
-                a(href="/user/detail/"+ user.id) View Detail
+extends ../layout/common
 
-a(href="/user/") Back
+block content
+  h1.ui.center.aligned.header List transaction in system
+  h4.ui.center.aligned.header 
+      form(action="/user/search", method="GET")
+          span Search user by name
+          span &nbsp &nbsp
+          input(type="text",name="q")
+          span &nbsp &nbsp &nbsp
+          button Search
+  .ui.container
+        table.ui.celled.table.center.aligned
+          thead
+            tr
+              th User ID
+              th Name
+              th Telephone
+              th  
+          tbody
+            each user in users
+              tr
+                td= user.id
+                td= user.name
+                td= user.tel
+                td 
+                  a(href="/user/detail/"+ user.id) View Detail
+
+          tfoot
+            tr
+              th(colspan='4')
+
+
+  a(href="/user/") Back

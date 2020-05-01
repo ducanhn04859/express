@@ -78,13 +78,13 @@
       "id": "y__S-CXzO",
       "userId": "fdZIm6FSZ",
       "bookId": "20FtJjzPH",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": "ptlZBIH9y",
       "userId": "uoBmROANk",
       "bookId": "20FtJjzPH",
-      "isComplete": false
+      "isComplete": true
     }
   ]
 }

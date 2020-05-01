@@ -1,13 +1,34 @@
-h1 Delete User
-br
-P Search user by name
-form(action="/user/search", method="GET")
-    input(type="text",name="q")
-    button Search
-ul
-    each user in users
-        li
-            span= user.name
-            span &nbsp;
-                a(href="/user/delete/"+ user.id) Delete
-a(href="/user/") Back
+extends ../layout/common
+
+block content
+  h1.ui.center.aligned.header List User In System
+  h4.ui.center.aligned.header 
+      form(action="/user/search", method="GET")
+          span Search book by name
+          span &nbsp &nbsp
+          input(type="text",name="q")
+          span &nbsp &nbsp &nbsp
+          button Search
+  .ui.container
+        table.ui.celled.table.center.aligned
+          thead
+            tr
+              th User ID
+              th Name
+              th Telephone
+              th  
+          tbody
+            each user in users
+              tr
+                td= user.id
+                td= user.name
+                td= user.tel
+                td 
+                  a(href="/user/detail/"+ user.id) Delete
+
+          tfoot
+            tr
+              th(colspan='4')
+
+
+  a(href="/book/") Back
