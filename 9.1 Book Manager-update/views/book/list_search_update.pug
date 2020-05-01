@@ -1,0 +1,13 @@
+h1 Update Book
+br
+p Search book by name
+form(action="/book/search", method="GET")
+    input(type="text",name="q")
+    button Search
+ul
+    each book in books
+        li
+            span= book.title
+            span &nbsp;
+                a(href="/book/edit/"+ book.id) Edit
+a(href="/book/") Back
