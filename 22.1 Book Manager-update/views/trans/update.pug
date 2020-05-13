@@ -1,0 +1,25 @@
+extends ../layout/common
+
+block content
+  h1 UPDATE TRANSACTION BY ID
+
+  form(action="/transaction/edit/"+ trans.id ,method="POST")
+      label User Name :
+      span &nbsp 
+      span=users.find(x => x.id === trans.userId).name
+      br
+      br
+      label Title Book :
+      span &nbsp
+      span=books.find(x => x.id === trans.bookId).title
+      br
+      br
+      label Status Book :
+      input#rent(type='radio', name='status', value= 'false' ,checked=(trans.isComplete == true) ? false : true )
+      label(for='rent') Renting
+       span &nbsp &nbsp &nbsp &nbsp
+      input#comt(type='radio', name='status', value= 'true' ,checked=(trans.isComplete == true) ? true : false)
+      label(for='comt') Complete
+      br
+      br
+      button UPDATE

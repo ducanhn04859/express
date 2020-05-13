@@ -1,0 +1,33 @@
+extends ../layout/common
+
+block content   
+  h1.ui.center.aligned.header List Book In System
+  h4.ui.center.aligned.header 
+      form.form-inline.my-2.my-lg-0(action="/book/search", method="GET")
+        span Search book by name
+        span &nbsp &nbsp
+        input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search',name="q")
+        button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+  .ui.container
+        table.ui.celled.table.center.aligned
+          thead
+            tr
+              th Book ID
+              th Title
+              th Description
+              th  
+          tbody
+            each book in books
+              tr
+                td= book.id
+                td= book.title
+                td= book.des
+                td 
+                  a(href="/book/edit/"+ book.id) Edit
+
+          tfoot
+            tr
+              th(colspan='4')
+
+
+  a(href="/book/") Back

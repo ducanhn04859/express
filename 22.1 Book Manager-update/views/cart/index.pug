@@ -1,0 +1,46 @@
+extends ../layout/common
+
+block content
+    h1.ui.center.aligned.header Items In Cart
+    .ui.container
+        table.ui.celled.table.center.aligned
+            thead
+            tr
+                th No.
+                th Title
+                th Quantity
+            tbody
+              -  for(var book in books){
+                  - var x =book_item.find(x => x.id === book.toString())
+                  tr
+                     td #{1}
+                     td= (x&&x.title)? x.title :' wrong'
+                     td= books[book]
+              - }
+                
+            //- nav(aria-label='Page navigation').mt-4
+                    ul.pagination.justify-content-center
+                        if(current_page == 1  )
+                            li.page-item.disabled
+                                a.page-link(href='/book/list?page=1', tabindex='-1', aria-disabled='true') Previous
+                        else
+                            - var back_page = parseInt(current_page)-1;
+                            li.page-item
+                                a.page-link(href=href='/book/list?page='+(back_page)) Previous
+                        - var n =1;
+                            while (n < (numpage+1))
+                                if (n == current_page) 
+                                    li.page-item.active(aria-current='page')
+                                        a.page-link(href=href='/book/list?page='+n)=n++
+                                            span.sr-only (current)
+                                else
+                                    li.page-item
+                                            a.page-link(href='/book/list?page='+n)= n++
+                        if( current_page == numpage)
+                            li.page-item.disabled
+                                a.page-link(href='/book/list?page=1', tabindex='-1', aria-disabled='true') Next
+                        else
+                            - var next_page = parseInt(current_page)+1;
+                            li.page-item
+                                a.page-link(href=href='/book/list?page='+(next_page)) Next
+
