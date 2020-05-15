@@ -1,0 +1,13 @@
+h1 UPDATE USER BY ID
+
+form(action="/user/edit/"+ users.id ,method="POST")
+    label User Name :
+    span &nbsp
+    input(type="text", name="name_u", value= users.name)
+    br
+    label Telephone number :
+    span &nbsp
+     input(type="text", name="tel_u", value= users.tel)
+    br
+    br
+    button UPDATE

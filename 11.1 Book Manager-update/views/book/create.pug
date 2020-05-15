@@ -1,0 +1,15 @@
+extends ../layout/common
+
+block content
+    h1 ADD NEW BOOK
+
+    form(action="/book/create",method="POST")
+        .form-group
+            label(for='title') Title :
+            input#title.form-control(type="text", name="title")
+        .form-group
+            label(for='des') Description:
+            textarea#des.form-control(rows='3',name="des")
+        .d-flex.align-items-center
+            button.btn.btn-primary ADD
+            a.btn.btn-danger.ml-auto(href='/book/', role='button') Back

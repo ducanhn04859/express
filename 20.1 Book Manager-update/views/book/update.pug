@@ -1,0 +1,16 @@
+extends ../layout/common
+
+block content
+  h1 UPDATE BOOK BY ID
+
+  form(action="/book/edit/"+ book.id ,method="POST")
+      label Title :
+      span &nbsp
+      input(type="text", name="title_u", value= book.title)
+      br
+      label Description :
+      br
+      textarea(name="des_u")=book.des
+      br
+      br
+      button UPDATE

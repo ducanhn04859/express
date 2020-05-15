@@ -1,0 +1,78 @@
+{
+  "list_book": [
+    {
+      "id": "8iTjyAnT2",
+      "title": "Bài giảng",
+      "des": "adas"
+    },
+    {
+      "id": "fbv6DIVpq",
+      "title": "CSS",
+      "des": "Duc Anh"
+    },
+    {
+      "id": "gIv5q2b76",
+      "title": "Coder",
+      "des": "Duc Anh"
+    },
+    {
+      "id": "czN1714uI",
+      "title": "SSG",
+      "des": "FPT"
+    }
+  ],
+  "list_user": [
+    {
+      "id": "vCfQvmdf-",
+      "name": "test123",
+      "tel": "13465456",
+      "email": "123123@gmail.com",
+      "pass": "$2b$10$uxOP2fE6wPJKzH0afEH9Yu9gAAA7aY0ke9kl0BT8yPl0Y0j9fkQ1u",
+      "isAdmin": false
+    },
+    {
+      "id": "61s5PVLnD",
+      "name": "test1234",
+      "tel": "13465456",
+      "email": "test123456@gmail.com",
+      "pass": "$2b$10$iAv/51hlnVngXwpK2UdDteyZ.iuYpQHim0/ppBdVZbQkQUHI3L4KG",
+      "isAdmin": true
+    },
+    {
+      "id": "A5gb25_79",
+      "name": "Minh Phuong",
+      "tel": "13465456",
+      "email": "1231234@gmail.com",
+      "pass": "$2b$10$EG6PX45vZceOv.B3u5d3IeYPuhjwaVGMLLGOIn9Nbyprsx8yP5j1S",
+      "isAdmin": false
+    },
+    {
+      "id": "9ukVkGji0",
+      "name": "Khanh My",
+      "tel": "13465456",
+      "email": "123123123@gmail.com",
+      "pass": "$2b$10$5m6be7ULblAIM/X2Wpx3dOpLhX8gZSU1w0KELgVS.V67lRbiCeY8G",
+      "isAdmin": false
+    }
+  ],
+  "list_trans": [
+    {
+      "id": "grfPmhVdp",
+      "userId": "vCfQvmdf-",
+      "bookId": "8iTjyAnT2",
+      "isComplete": false
+    },
+    {
+      "id": "TchsByPu2",
+      "userId": "61s5PVLnD",
+      "bookId": "fbv6DIVpq",
+      "isComplete": false
+    },
+    {
+      "id": "k68SBiAjX",
+      "userId": "9ukVkGji0",
+      "bookId": "czN1714uI",
+      "isComplete": false
+    }
+  ]
+}

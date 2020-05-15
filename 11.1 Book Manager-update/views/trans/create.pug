@@ -1,0 +1,22 @@
+extends ../layout/common
+
+block content
+    h1 ADD TRANSACTION BOOK
+
+    div
+        form(action='/transaction/create' method="post")
+            label(for='userOpt') Username:
+            select.form-control(name='dD_user', id='userOpt')
+                each user in users
+                    option=user.name
+
+            label(for='bookOpt') Title book: 
+            select.form-control(name='dD_book', id='bookOpt')
+                each book in books
+                    option=book.title
+            br
+            br            
+            .d-flex.align-items-center
+                button.btn.btn-primary ADD
+                a.btn.btn-danger.ml-auto(href='/transaction/list', role='button') Back
+            

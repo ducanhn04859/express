@@ -1,0 +1,22 @@
+extends ../layout/common
+
+block content
+  h1 View Detail Book
+
+  p 
+      b ID-book: 
+      span &nbsp
+      span= book.id
+      br
+      br
+      b Title:
+      span &nbsp
+      span= book.title
+      br
+      br
+      b Description:
+      span &nbsp
+      span= book.des
+  br
+  br
+  a(href="/book/list") Back
