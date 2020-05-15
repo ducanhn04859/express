@@ -10,6 +10,8 @@ var transRoute = require("./routes/transaction.route");
 var authRoute = require("./routes/auth.route");
 var productRoute = require("./routes/product.route");
 var cartRoute = require("./routes/cart.route");
+var mongoose = require("mongoose");
+mongoose.connect(process.env.MONGO_URL);
 
 var authMiddlewares = require("./middlewares/auth.middlewares");
 var sessionMiddlewares = require("./middlewares/session.middleware");
@@ -50,7 +52,9 @@ app.use(
 );
 //app.use("/transaction", transRoute);
 app.use("/auth", sessionMiddlewares, countIteamMiddlewar, authRoute);
-app.use("/product", sessionMiddlewares, countIteamMiddlewar, productRoute);
+//app.use("/product", sessionMiddlewares, countIteamMiddlewar, productRoute);
+app.use("/product", productRoute);
+
 app.use("/cart", sessionMiddlewares, countIteamMiddlewar, cartRoute);
 
 app.listen(port, function() {

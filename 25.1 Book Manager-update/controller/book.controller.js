@@ -1,25 +1,31 @@
 var db = require("../db");
 var shortid = require("shortid");
+var Book = require("../model/book.model");
 
 module.exports.index = function(request, response) {
     response.render("book/index");
 };
 
 module.exports.list = function(request, response) {
-    var page = parseInt(request.query.page) || 1; //n
-    var perPgae = 8; //x
-    var total_book = db.get("list_book").value().length;
-    var drop = (page - 1) * perPgae;
-    var total_page = Math.ceil(total_book / perPgae);
-    var current_page = request.query.page;
-    //console.log(current_page);
-    if (current_page == undefined || current_page == NaN) {
-        current_page = 1;
-    }
-    response.render("book/list", {
-        books: db.get("list_book").drop(drop).take(perPgae).value(),
-        numpage: total_page,
-        current_page: current_page,
+    // var page = parseInt(request.query.page) || 1; //n
+    // var perPgae = 8; //x
+    // var total_book = db.get("list_book").value().length;
+    // var drop = (page - 1) * perPgae;
+    // var total_page = Math.ceil(total_book / perPgae);
+    // var current_page = request.query.page;
+    // //console.log(current_page);
+    // if (current_page == undefined || current_page == NaN) {
+    //     current_page = 1;
+    // }
+    // response.render("book/list", {
+    //     books: db.get("list_book").drop(drop).take(perPgae).value(),
+    //     numpage: total_page,
+    //     current_page: current_page,
+    // });
+    Book.find().then(function(Books) {
+        response.render("book/list", {
+            books: Books,
+        });
     });
 };
 
