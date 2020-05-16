@@ -13,10 +13,11 @@ var cartRoute = require("./routes/cart.route");
 var mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URL);
 
+var apiProductRoute = require("./api/routes/product.route");
+var apiAuthRoute = require("./api/routes/auth.route");
 var authMiddlewares = require("./middlewares/auth.middlewares");
 var sessionMiddlewares = require("./middlewares/session.middleware");
 var countIteamMiddlewar = require("./middlewares/countIteam.middleware");
-
 var port = 3000;
 
 app.set("view engine", "pug");
@@ -24,6 +25,8 @@ app.set("views", "./views");
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cookieParser(SESSTION_SECRET));
+app.use("/api/products", apiProductRoute);
+app.use("/api/login", apiAuthRoute);
 app.use(express.static("public"));
 //app.use(sessionMiddlewares);
 //app.use(countIteamMiddlewar);
@@ -54,9 +57,7 @@ app.use(
 app.use("/auth", sessionMiddlewares, countIteamMiddlewar, authRoute);
 //app.use("/product", sessionMiddlewares, countIteamMiddlewar, productRoute);
 app.use("/product", productRoute);
-
 app.use("/cart", sessionMiddlewares, countIteamMiddlewar, cartRoute);
-
 app.listen(port, function() {
     console.log("Server listening on port " + port);
 });
