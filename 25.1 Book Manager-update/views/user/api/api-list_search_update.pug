@@ -1,0 +1,30 @@
+extends ../../layout/common
+
+block content
+  h1.ui.center.aligned.header List User In System
+  h4.ui.center.aligned.header 
+      form(action="/api/users/search", method="GET")
+          span Search book by name
+          span &nbsp &nbsp
+          input(type="text",name="q")
+          span &nbsp &nbsp &nbsp
+          button Search
+  .ui.container
+        table.ui.celled.table.center.aligned
+          thead
+            tr
+              th User ID
+              th Name
+              th Telephone
+              th  
+          tbody
+            each user in users
+              tr
+                td= user['id']
+                td= user['name']
+                td= user['tel']
+                td 
+                  a(href="/api/users/edit/"+ user['id']) Edit
+
+
+  a(href="/book/") Back

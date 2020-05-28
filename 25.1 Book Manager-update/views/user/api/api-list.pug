@@ -1,0 +1,37 @@
+extends ../../layout/common
+
+block content
+  if errors
+      each error in errors
+        .alert.alert-danger= error
+  h1.ui.center.aligned.header List user in system
+  h4.ui.center.aligned.header 
+      form(action="/api/users/search", method="GET")
+          span Search user by name
+          span &nbsp &nbsp
+          input(type="text",name="q")
+          span &nbsp &nbsp &nbsp
+          button Search
+  .ui.container
+        table.ui.celled.table.center.aligned
+          thead
+            tr
+              th Avatar
+              th User ID
+              th Name 
+              th Telephone
+              th  
+          tbody
+          if users != undefined
+            each user in users
+              tr
+                td 
+                  img(src=user["avatar"] ,style="background: #dddddd; border-radius: 50%; border: 1px solid #a1a1a1; height: 64px; margin: 2px; padding: 1px; text-align: center; width: 64px;")
+                td #{user["_id"]}
+                td= user["name"]
+                td= user["tel"]
+                td 
+                  a(href="/api/users/detail/"+ user["_id"]) View Detail
+
+
+  a(href="/api/users/list/") Back

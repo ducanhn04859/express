@@ -15,6 +15,9 @@ mongoose.connect(process.env.MONGO_URL);
 
 var apiProductRoute = require("./api/routes/product.route");
 var apiAuthRoute = require("./api/routes/auth.route");
+var apiTransRoute = require("./api/routes/trans.route");
+var apiUserRoute = require("./api/routes/user.route");
+
 var authMiddlewares = require("./middlewares/auth.middlewares");
 var sessionMiddlewares = require("./middlewares/session.middleware");
 var countIteamMiddlewar = require("./middlewares/countIteam.middleware");
@@ -27,9 +30,12 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.use(cookieParser(SESSTION_SECRET));
 app.use("/api/products", apiProductRoute);
 app.use("/api/login", apiAuthRoute);
+app.use("/api/trans", apiTransRoute);
+app.use("/api/users", apiUserRoute);
+
 app.use(express.static("public"));
-//app.use(sessionMiddlewares);
-//app.use(countIteamMiddlewar);
+app.use(sessionMiddlewares);
+app.use(countIteamMiddlewar);
 
 app.get("/", function(request, response) {
     response.render("index", {
@@ -55,8 +61,8 @@ app.use(
 );
 //app.use("/transaction", transRoute);
 app.use("/auth", sessionMiddlewares, countIteamMiddlewar, authRoute);
-//app.use("/product", sessionMiddlewares, countIteamMiddlewar, productRoute);
-app.use("/product", productRoute);
+app.use("/product", sessionMiddlewares, countIteamMiddlewar, productRoute);
+//app.use("/product", productRoute);
 app.use("/cart", sessionMiddlewares, countIteamMiddlewar, cartRoute);
 app.listen(port, function() {
     console.log("Server listening on port " + port);

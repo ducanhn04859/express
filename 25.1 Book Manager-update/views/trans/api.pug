@@ -1,0 +1,33 @@
+extends ../layout/common
+
+block content
+  h1 Manager Transaction In System 
+  if errors
+      each error in errors
+        .alert.alert-danger= error
+  main#main
+      h1.ui.center.aligned.header List transaction in system
+      .ui.container
+        table.ui.celled.table.center.aligned
+          thead
+            tr
+              th ID Transaction
+              th UserName
+              th Title
+              th Status
+              th  
+          tbody
+            each tran in trans
+              tr
+                td #{tran["_id"]}
+                td= users.find(x => x["_id"] == tran["userId"])['name']
+                td= books.find(x => x["_id"] == tran["bookId"])['title']
+                td=(tran["isComplete"] == true)?'Complete' :'Renting'
+                td 
+                  a(href="/transaction/edit/"+ tran["_id"]) Edit
+
+          tfoot
+            tr
+              th(colspan='5')
+
+  a(href="/transactzion/") Back

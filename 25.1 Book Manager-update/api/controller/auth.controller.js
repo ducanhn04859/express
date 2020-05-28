@@ -13,7 +13,7 @@ module.exports.post_login = async function(request, response) {
     var user = await User.find({
         email: email,
     });
-    //console.log(typeof user[0]["pass"]);
+    console.log(user[0]);
     if (!user) {
         response.render("auth/login", {
             errors: ["User does not exsit !"],
@@ -35,7 +35,7 @@ module.exports.post_login = async function(request, response) {
                 response.cookie("userID", user[0]["_id"], {
                     signed: true,
                 });
-                response.redirect("/user/list");
+                response.redirect("/api/users/list");
                 return;
             }
         });
